@@ -1,0 +1,319 @@
+/* src/App.css */
+
+/* --- Keep all your existing :root variables and base styles --- */
+:root {
+  --primary-color: #007bff;
+  --card-background: #ffffff;
+  --background-color: #0c8aea;
+  --border-radius: 8px;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  --border-color: #dee2e6;
+  --input-focus-border: #80bdff;
+  --input-focus-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  --success-color: #28a745;
+  --success-hover-color: #218838;
+  --secondary-color: #6c757d;
+  --dark-color: #343a40;
+  --light-color: #f8f9fa;
+}
+
+body {
+  /* ... (your base body styles) ... */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  background-color: var(--background-color, #eef2f5);
+}
+
+.App {
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 0 20px; /* Base padding */
+}
+
+.App-header {
+  /* ... (your header styles) ... */
+  padding: 20px 30px;
+  margin-bottom: 30px;
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space out title and user/logout */
+  align-items: center;
+  flex-wrap: wrap; /* Allow items to wrap on small screens */
+  gap: 15px; /* Add gap for wrapped items */
+}
+.App-header h1 {
+   margin: 0; /* Remove default margin */
+   font-size: 1.6rem; /* Adjust size as needed */
+}
+.App-header > div { /* Target the div containing welcome/logout */
+   display: flex;
+   align-items: center;
+   gap: 15px;
+}
+
+
+/* Main Content Area Layout - Default to 2 columns */
+.App-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns default */
+  gap: 30px;
+  align-items: start;
+}
+
+/* Reports Section - Outside main grid */
+.App-reports {
+    margin-top: 30px; /* Space above reports */
+}
+
+/* Card Styling (Dashboard, Checkin Form, Reports) */
+.dashboard,
+.check-in-form,
+.download-reports.card-style { /* Target reports if using card style */
+  background-color: var(--card-background, #ffffff);
+  padding: 25px 30px;
+  border-radius: var(--border-radius, 8px);
+  box-shadow: var(--shadow, 0 4px 8px rgba(0, 0, 0, 0.05));
+  border: 1px solid var(--border-color, #dee2e6);
+}
+
+/* Headings */
+h2 {
+  /* ... (your h2 styles) ... */
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.4rem;
+}
+
+/* --- Form Styling --- */
+.check-in-form form,
+.login-box form,
+.signup-box form {
+  display: flex;
+  flex-direction: column; /* Stack form elements vertically */
+  gap: 15px; /* Consistent gap */
+}
+
+/* Input group / row styling */
+.form-row, /* Add this class to divs wrapping label/input in CheckInForm */
+.login-box .inputGroup,
+.signup-box .inputGroup {
+  margin-bottom: 5px; /* Adjust spacing as needed */
+}
+
+/* Form Grid for Paired Inputs (in CheckInForm) */
+.form-grid-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns default */
+  gap: 20px;
+  align-items: start; /* Align items to the top */
+}
+
+
+label { /* General Label Styles */
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--secondary-color, #6c757d);
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="password"],
+select,
+textarea {
+  /* ... (your input styles: width 100%, padding, border, etc) ... */
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+input:focus, select:focus, textarea:focus {
+   /* ... (your focus styles) ... */
+   border-color: var(--input-focus-border, #80bdff);
+   outline: 0;
+   box-shadow: var(--input-focus-shadow, 0 0 0 0.2rem rgba(0, 123, 255, 0.25));
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+button {
+  /* ... (your base button styles - padding, border-radius, cursor, etc) ... */
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  /* Default alignment for buttons directly in forms */
+  justify-self: start;
+  align-self: start;
+  margin-top: 10px;
+}
+button:disabled {
+   opacity: 0.65;
+   cursor: not-allowed;
+}
+
+/* Specific Button Colors (Examples) */
+.check-in-form button[type="submit"] { background-color: var(--success-color, #28a745); color: white; }
+.check-in-form button[type="submit"]:hover:not(:disabled) { background-color: var(--success-hover-color, #218838); }
+.login-box button[type="submit"] { background-color: var(--primary-color, #007bff); color: white; }
+.login-box button[type="submit"]:hover:not(:disabled) { background-color: var(--primary-hover-color, #0056b3); }
+.signup-box button[type="submit"] { background-color: var(--success-color, #28a745); color: white; }
+.signup-box button[type="submit"]:hover:not(:disabled) { background-color: var(--success-hover-color, #218838); }
+.dashboard-refresh-button { background-color: var(--primary-color, #007bff); color: white; }
+.dashboard-refresh-button:hover:not(:disabled) { background-color: var(--primary-hover-color, #0056b3); }
+.download-reports button { background-color: var(--secondary-color, #6c757d); color: white; font-size: 0.9rem; padding: 10px 15px; }
+.download-reports button:hover:not(:disabled) { background-color: var(--dark-color, #343a40); }
+
+
+/* Dashboard Metrics */
+.dashboard-metrics {
+  display: grid;
+  /* Responsive grid - auto-fit columns with a minimum width */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px; /* Space before refresh button */
+}
+
+.metric-item {
+  /* ... (your metric item styles: background, padding, border, flex, etc) ... */
+  background-color: var(--light-color, #f8f9fa);
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color, #dee2e6);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.metric-item svg { font-size: 1.5rem; color: var(--primary-color, #007bff); flex-shrink: 0; }
+.metric-item div { display: flex; flex-direction: column; }
+.metric-label { font-size: 0.85rem; color: var(--secondary-color, #6c757d); margin-bottom: 3px; }
+.metric-value { font-size: 1.25rem; font-weight: 600; color: var(--dark-color, #343a40); }
+
+/* Messages (Error/Success) */
+.error-message, .success-message {
+  /* ... (your message styles: padding, margin, border-radius, colors) ... */
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  word-wrap: break-word; /* Prevent long messages from overflowing */
+}
+.success-message { color: #155724; background-color: #d4edda; border-color: #c3e6cb; }
+.error-message { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; }
+
+
+/* --- Responsive Styles --- */
+
+/* Medium Screens (Tablets, Small Laptops) */
+@media (max-width: 992px) {
+  .App-main {
+    grid-template-columns: 1fr; /* Stack Dashboard and CheckInForm */
+  }
+}
+
+/* Small Screens (Large Phones, Small Tablets) */
+@media (max-width: 768px) {
+  .App {
+    padding: 0 15px; /* Reduce side padding */
+  }
+  .App-header {
+    padding: 15px 20px; /* Reduce header padding */
+    margin-bottom: 20px;
+  }
+   .App-header h1 {
+      font-size: 1.4rem; /* Slightly smaller title */
+   }
+  .App-main {
+    gap: 20px; /* Reduce gap between stacked items */
+  }
+  .dashboard,
+  .check-in-form,
+  .download-reports.card-style {
+    padding: 20px; /* Reduce card padding */
+  }
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  /* Stack paired form inputs */
+  .form-grid-pair {
+      grid-template-columns: 1fr; /* Stack inputs */
+      gap: 15px; /* Adjust gap for stacked inputs */
+  }
+
+  /* Make form buttons full width */
+  .check-in-form button[type="submit"],
+  .login-box button[type="submit"],
+  .signup-box button[type="submit"] {
+      width: 100%;
+      justify-content: center; /* Center text if needed */
+  }
+
+  /* Adjust dashboard metrics grid */
+   .dashboard-metrics {
+     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Allow slightly smaller items */
+     gap: 10px;
+   }
+   .metric-item { padding: 12px; }
+   .metric-value { font-size: 1.1rem; }
+
+   /* Auth form adjustments (if needed) */
+   .login-box, .signup-box {
+      padding: 30px;
+   }
+
+}
+
+/* Very Small Screens (Phones) */
+@media (max-width: 576px) {
+   .App-header {
+      /* Ensure elements stack reasonably, flex-wrap handles most of it */
+      padding: 15px;
+   }
+    .App-header h1 {
+       font-size: 1.25rem;
+   }
+    .App-header > div { /* Welcome/Logout container */
+        gap: 10px;
+        width: 100%; /* Allow full width if wraps */
+        justify-content: space-between; /* Space out when wrapped */
+   }
+
+   label, input, select, textarea, button {
+      font-size: 0.95rem; /* Slightly smaller fonts on very small screens */
+   }
+   button { padding: 10px 15px; }
+
+    .dashboard-metrics {
+      grid-template-columns: 1fr 1fr; /* Force two columns */
+      gap: 8px;
+    }
+    .metric-item svg { font-size: 1.3rem; }
+    .metric-label { font-size: 0.8rem; }
+    .metric-value { font-size: 1rem; }
+
+    /* Auth form adjustments */
+   .login-box, .signup-box {
+      padding: 20px;
+      border: none; /* Maybe remove border/shadow */
+      box-shadow: none;
+   }
+
+}
+
+/* Spinning animation for refresh/loading icons */
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.spin { animation: spin 1s linear infinite; }
